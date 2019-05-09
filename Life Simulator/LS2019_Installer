@@ -1,0 +1,51 @@
+#!/usr/bin/python -tt
+#!/usr/bin/env python
+
+import os
+import time
+import sys
+
+os.system('clear')
+operating_system = (sys.platform) # Check operating system
+
+if operating_system != "darwin": # Compare operating system to mac operating system
+    print("--- WARNING ---")
+    print("You are not running MacOSX. This is currently not supported on any other operating systems. Please continue at your own risk.")
+
+homebrew_install_cmd = '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+
+print("--- LS2019 Installer (v1.1) ---")
+print(" ")
+homebrew = raw_input("Do you have Homebrew installed? (y/n)")
+
+if homebrew == "n":
+    print("Homebrew will now install!")
+    print("This may take 5-10 minutes if you have an older computer.")
+
+    time.sleep(1)
+
+    os.system(homebrew_install_cmd) # install homebrew cmd
+
+python = raw_input("Do you have Python3 installed? (y/n)")
+
+if python == "n":
+    print("Python will now install!")
+    print("This may take 5-10 minutes if you have an older computer.")
+
+    time.sleep(1)
+
+    os.system("brew install python3") # install python cmd
+
+os.system('clear')
+
+print("Termcolor will now be installed (this is necessary)")
+option = raw_input("Press ENTER to continue.")
+
+os.system('pip3 install termcolor') # install termcolor cmd
+
+os.system('clear')
+
+print("Installation complete! You can now open the full game!")
+option = raw_input("Press enter to exit.")
+
+os.system('killall Terminal') # close terminal
